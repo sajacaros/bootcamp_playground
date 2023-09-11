@@ -21,7 +21,6 @@ def is_valid(s: str) -> bool:
             stack.append(c)
     return len(stack) == 0
 
-
 def time_trace(func):
     def wrapper(*args, **kwargs):
         st = time.time()
@@ -35,6 +34,8 @@ def time_trace(func):
 @time_trace
 def judge_test(solution, str, expected):
     result = solution(str)
+    if not isinstance(result, bool):
+        return False
     ret = (result == expected)
     if ret:
         print(f'success, func: {solution.__name__}, input: {str}')
