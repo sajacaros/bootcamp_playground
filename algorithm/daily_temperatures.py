@@ -69,4 +69,3 @@ def judge_helper(solution):
 
 judge_helper(daily_temperatures)
 judge_helper(daily_temperatures_stack)
-judge_helper(daily_temperatures_stack2)
