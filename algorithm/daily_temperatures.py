@@ -14,7 +14,6 @@ def daily_temperatures(temperatures: List[int]) -> List[int]:
     return ret
 
 
-
 def daily_temperatures_stack(temperatures: List[int]) -> List[int]:
     # [73, 74, 75, 71, 69, 70, 76, 73],
     # [ 1,  1,  4,  3,  1,  1,  0,  0]
@@ -27,6 +26,7 @@ def daily_temperatures_stack(temperatures: List[int]) -> List[int]:
             answer[prev_d] = d - prev_d
         stack.append((d, t))
     return answer
+
 
 def time_trace(func):
     def wrapper(*args, **kwargs):
@@ -43,9 +43,11 @@ def judge_test(solution, nums, expected):
     ret = (result == expected)
     if ret:
         print(f'success, func: {solution.__name__}, input: {nums}')
+        return True
     else:
         print(
             f'failed, func: {solution.__name__}, input: {nums}, expect: {expected}, real: {result}')
+        return False
 
 def judge_helper(solution):
     assets = [
@@ -61,8 +63,10 @@ def judge_helper(solution):
         ([30, 40, 50, 60], [1, 1, 1, 0]),
         ([30, 60, 90],  [1, 1, 0]),
     ]
-    for asset in assets:
-        judge_test(solution, *asset)
+    passed = sum([judge_test(solution, *asset) for asset in assets])
+    print(f'{len(assets)} tests, passed : {passed}, failed: {len(assets) - passed}\n')
+
 
 judge_helper(daily_temperatures)
 judge_helper(daily_temperatures_stack)
+judge_helper(daily_temperatures_stack2)
