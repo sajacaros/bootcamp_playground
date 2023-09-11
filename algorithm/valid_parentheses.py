@@ -8,7 +8,7 @@ def is_valid(s: str) -> bool:
     for c in s:
         if c in parentheses:
             ret = False
-            while len(stack) != 0:
+            while stack:
                 cur = stack.pop()
                 if cur == parentheses[c]:
                     ret = True
@@ -19,7 +19,22 @@ def is_valid(s: str) -> bool:
                 return False
         else:
             stack.append(c)
-    return len(stack) == 0
+    return not stack
+
+def is_valid2(s: str) -> bool:
+    parentheses = {']': '[', '}': '{', ')': '('}
+    stack = []
+    for c in s:
+        if c in parentheses:
+            if stack and stack[-1] == parentheses[c]:
+                stack.pop()
+            else:
+                return False
+        else:
+            stack.append(c)
+    return not stack
+
+
 
 def time_trace(func):
     def wrapper(*args, **kwargs):
@@ -56,12 +71,10 @@ def judge_helper(solution):
         ("{", False),
         ("({[)", False),
         ("]", False),
-        (")(){}", False)
-
+        (")(){}", False),
     ]
     passed = sum([judge_test(solution, *asset) for asset in assets])
     print(f'{len(assets)} tests, passed : {passed}, failed: {len(assets) - passed}\n')
 
 
-judge_helper(is_valid)
-
+judge_helper(is_valid2)
