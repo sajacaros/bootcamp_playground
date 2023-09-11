@@ -16,14 +16,15 @@ def twoSum2(nums: List[int], target: int) -> List[int]:
     for idx, n in enumerate(nums):
         diff = target - n
         if diff in num_dict and idx != num_dict[diff]:
-            return [idx, diff]
+            return [idx, num_dict[diff]]
 
 def judge_test(solution, nums, target, expected):
-    ret = (solution(nums, target).sort() == expected.sort())
+    result = solution(nums, target)
+    ret = (sorted(result) == sorted(expected))
     if ret:
-        print(f'success, input:{nums}, target:{target}')
+        print(f'success, func: {solution.__name__}, input: {nums}, target: {target}')
     else:
-        print(f'failed, input:{nums}, target:{target}, expect : {expected}, real : {ret}')
+        print(f'failed, func: {solution.__name__}, input: {nums}, target: {target}, expect: {expected}, real: {result}')
 
 def judge_tests(solution):
     assets = [
