@@ -88,16 +88,11 @@ n2.left_node = n5
 n2.right_node = n6
 n5.right_node = n8
 n6.left_node = n9
+
 print_tree()
 print('-------- pre order --------')
 print(Travel.travel_preorder(root))
-print()
-
-print_tree()
 print('-------- in order --------')
 print(Travel.travel_inorder(root))
-print()
-
-print_tree()
 print('-------- post order --------')
 print(Travel.travel_postorder(root))
