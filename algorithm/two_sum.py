@@ -9,6 +9,14 @@ def twoSum(nums: List[int], target: int) -> List[int]:
             if nums[i] + nums[j] == target:
                 return [i, j]
 
+def twoSum_dict(nums: List[int], target: int) -> List[int]:
+    num_dict = {idx:num for idx, num in enumerate(nums)}
+    len_n = len(nums)
+    for i in range(len_n):
+        for j in range(i + 1, len_n):
+            if num_dict[i] + num_dict[j] == target:
+                return [i, j]
+
 
 def twoSum2(nums: List[int], target: int) -> List[int]:
     num_dict = {}
@@ -55,3 +63,4 @@ def judge_helper(solution):
 
 judge_helper(twoSum)
 judge_helper(twoSum2)
+judge_helper(twoSum_dict)
