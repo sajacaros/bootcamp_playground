@@ -58,26 +58,22 @@ class Tree:
         self._right_node = node
 
 
-
-
-
-
-root = Tree('root')
-n1 = Tree('n1')
-n2 = Tree('n2')
-n3 = Tree('n3')
-n4 = Tree('n4')
-n5 = Tree('n5')
-n6 = Tree('n6')
-n7 = Tree('n7')
-n8 = Tree('n8')
-n9 = Tree('n9')
+root = Tree('a')
+n1 = Tree('b')
+n2 = Tree('c')
+n3 = Tree('d')
+n4 = Tree('e')
+n5 = Tree('f')
+n6 = Tree('g')
+n7 = Tree('h')
+n8 = Tree('i')
+n9 = Tree('j')
 
 def print_tree():
-    print('         root')
-    print('    1             2')
-    print(' 3    4        5     6')
-    print('     7          8   9')
+    print('          a')
+    print('    b             c')
+    print(' d    e        f     g')
+    print('     h          i   j')
 
 root.left_node = n1
 root.right_node = n2
