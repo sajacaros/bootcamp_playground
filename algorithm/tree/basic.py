@@ -2,26 +2,33 @@ class Travel:
     @staticmethod
     def travel_preorder(curr_node):
         if curr_node is None:
-            return
-        print(curr_node.value)
-        Travel.travel_preorder(curr_node.left_node)
-        Travel.travel_preorder(curr_node.right_node)
+            return ''
+        # print(curr_node.value)
+        l = Travel.travel_preorder(curr_node.left_node)
+        r = Travel.travel_preorder(curr_node.right_node)
+        l_message = '' if l == '' else ' -> ' + l
+        r_message = '' if r == '' else ' -> ' + r
+        return curr_node.value + l_message + r_message
 
     @staticmethod
     def travel_inorder(curr_node):
         if curr_node is None:
-            return
-        Travel.travel_inorder(curr_node.left_node)
-        print(curr_node.value)
-        Travel.travel_inorder(curr_node.right_node)
+            return ''
+        l = Travel.travel_inorder(curr_node.left_node)
+        r = Travel.travel_inorder(curr_node.right_node)
+        l_message = '' if l == '' else l + ' -> '
+        r_message = '' if r == '' else ' -> ' + r
+        return l_message + curr_node.value + r_message
 
     @staticmethod
     def travel_postorder(curr_node):
         if curr_node is None:
-            return
-        Travel.travel_postorder(curr_node.left_node)
-        Travel.travel_postorder(curr_node.right_node)
-        print(curr_node.value)
+            return ''
+        l = Travel.travel_postorder(curr_node.left_node)
+        r = Travel.travel_postorder(curr_node.right_node)
+        l_message = '' if l == '' else l + ' -> '
+        r_message = '' if r == '' else r + ' -> '
+        return l_message + r_message + curr_node.value
 
 
 class Tree:
@@ -83,10 +90,14 @@ n5.right_node = n8
 n6.left_node = n9
 print_tree()
 print('-------- pre order --------')
-Travel.travel_preorder(root)
+print(Travel.travel_preorder(root))
+print()
+
 print_tree()
 print('-------- in order --------')
-Travel.travel_inorder(root)
+print(Travel.travel_inorder(root))
+print()
+
 print_tree()
 print('-------- post order --------')
-Travel.travel_postorder(root)
+print(Travel.travel_postorder(root))
