@@ -1,8 +1,9 @@
+# https://leetcode.com/problems/keys-and-rooms
+# 841. Keys and Rooms
 from collections import deque
 from typing import List
 
 
-# https://leetcode.com/problems/keys-and-rooms
 def canVisitAllRooms(rooms: List[List[int]]) -> bool:
     is_locked = [True] * len(rooms)
     q = deque()
