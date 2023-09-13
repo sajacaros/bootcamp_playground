@@ -15,16 +15,18 @@ def shortestPathBinaryMatrix(grid: List[List[int]]) -> int:
 
     def bfs(start_row, start_col):
         q = deque()
-        q.append((0, start_row, start_col))
+        q.append(([(0,0)], start_row, start_col))
         while q:
             depth, cur_r, cur_c = q.popleft()
             if (cur_r == (row_len - 1)) and (cur_c == (col_len - 1)):
-                return depth + 1
+                return depth
             for r, c in direction:
                 next_r, next_c = cur_r + r, cur_c + c
-                if is_valid(next_r, next_c) and (grid[next_r][next_c] == 0) and visited[next_r][next_c] == False:
+                if is_valid(next_r, next_c) and (grid[next_r][next_c] == 0) and not visited[next_r][next_c]:
                     visited[next_r][next_c] = True
-                    q.append((depth + 1, next_r, next_c))
+                    next_path = depth[:]
+                    next_path.append((next_r,next_c))
+                    q.append((next_path, next_r, next_c))
         return -1
 
     if grid[0][0] != 0 or grid[row_len - 1][col_len - 1] != 0:
@@ -33,15 +35,15 @@ def shortestPathBinaryMatrix(grid: List[List[int]]) -> int:
     return bfs(0, 0)
 
 
-grid = [ # 9
+grid = [  # 9
     [0, 0, 0, 1, 0, 0, 0],
     [0, 1, 1, 1, 0, 1, 0],
     [0, 1, 0, 0, 0, 1, 0],
     [0, 0, 0, 1, 1, 1, 0],
     [0, 1, 0, 0, 0, 0, 0]
 ]
-# grid = [[0]]
-# grid = [[0,0,0],[1,1,0],[1,1,0]]
+# grid = [[0]] # 1
+# grid = [[0,0,0],[1,1,0],[1,1,0]] # 4
 # grid = [ # 4
 #     [0,0,1,0],
 #     [1,0,1,0],
