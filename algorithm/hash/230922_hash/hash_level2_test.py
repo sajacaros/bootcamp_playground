@@ -30,6 +30,10 @@ def test_case_7():
     phone_book9 = ["1", "11", "2", "22", "111"]
     assert solution(phone_book9) == False
 
+def test_case_8():
+    phone_book9 = ["1234", "11", "2", "22", "111"]
+    assert solution(phone_book9) == False
+
 
 if __name__ == "__main__":
     pytest.main()
