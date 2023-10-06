@@ -4,14 +4,11 @@ from itertools import permutations
 
 
 def solution(numbers):
-    prime_dict = {}
+    prime_dict = {0: False, 1: False}
 
     def is_prime_number(x):
         if x in prime_dict:
             return prime_dict[x]
-
-        if x == 0 or x == 1:
-            return False
 
         for i in range(2, x):
             if x % i == 0:
