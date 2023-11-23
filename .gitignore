@@ -284,3 +284,5 @@ project/
 
 *.csv
 *.pkl
+
+**/datasets/**
